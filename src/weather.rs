@@ -1,4 +1,4 @@
-use std::env;
+use dotenv::dotenv;
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
 use reqwest::Url;
@@ -64,14 +64,13 @@ struct Sys {
 
 pub async fn get_weather(city: &String) -> Result<(), Box<dyn std::error::Error>> {
     // Retrieve API key and city from command-line arguments
-    let args: Vec<String> = env::args().collect();
-    let api_key = &args[1];
+    let api_key: String = dotenv::var("WEATHER_API_KEY").expect("Error: WEATHER_API_KEY environment variable is not set. Please set it in the .env file. Make sure to obtain an API key from OpenWeather (https://openweathermap.org/) and assign it to the WEATHER_API_KEY variable.");
 
     // Create a new reqwest client
     let client = Client::new();
 
     // Fetch weather forecast
-    let my_weather: WeatherResponse = match fetch_weather(&client, api_key, city).await {
+    let my_weather: WeatherResponse = match fetch_weather(&client, &api_key, city).await {
         Ok(response) => response,
         Err(err) => {
             eprintln!("Provided city name is invalid. Please try again.\n");
@@ -104,7 +103,7 @@ fn deg_to_compass(degree: u32) -> Result<String, reqwest::Error> {
         1..=44 => compass = format!("N {}° E ↗", degree),
         45 => compass = "NE ↗".to_string(),
         46..=89 => compass = format!("N {}° E ↗", 90 - degree),
-        90 => compass = "E ➡".to_string(),
+        90 => compass = "E →".to_string(),
         91..=134 => compass = format!("S {}° E ↘", degree - 90),
         135 => compass = "SE ↘".to_string(),
         136..=179 => compass = format!("S {}° E ↘", 180 - degree),

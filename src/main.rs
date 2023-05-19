@@ -6,6 +6,15 @@ use weather::get_weather;
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let welcome_message = r#"
+    
+███████╗██╗░░░░░███████╗███╗░░░███╗███████╗███╗░░██╗████████╗░█████╗░░█████╗░██╗░░░░░██╗
+██╔════╝██║░░░░░██╔════╝████╗░████║██╔════╝████╗░██║╚══██╔══╝██╔══██╗██╔══██╗██║░░░░░██║
+█████╗░░██║░░░░░█████╗░░██╔████╔██║█████╗░░██╔██╗██║░░░██║░░░███████║██║░░╚═╝██║░░░░░██║
+██╔══╝░░██║░░░░░██╔══╝░░██║╚██╔╝██║██╔══╝░░██║╚████║░░░██║░░░██╔══██║██║░░██╗██║░░░░░██║
+███████╗███████╗███████╗██║░╚═╝░██║███████╗██║░╚███║░░░██║░░░██║░░██║╚█████╔╝███████╗██║
+╚══════╝╚══════╝╚══════╝╚═╝░░░░░╚═╝╚══════╝╚═╝░░╚══╝░░░╚═╝░░░╚═╝░░╚═╝░╚════╝░╚══════╝╚═╝
+
+
         Welcome to ElementaCLI, a Command Line Tool
         
         Available Commands:
@@ -22,17 +31,19 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     for line in stdin.lock().lines() {
         if let Ok(input) = line {
             let mut args = input.trim().split_whitespace();
+            println!();
+
             match args.next() {
-                Some("list") => println!("Available Commands:\n- list\n- weather [city]\n- end"),
+                Some("list") => println!("\nAvailable Commands:\n- list: Displays the available commands\n- weather [city]: Retrieves weather information for the specified city\n- end: Exits the program\n"),
                 Some("weather") => {
                     if let Some(city) = args.next() {
                         get_weather(&city.to_string()).await?; // Await the future returned by get_weather
                     } else {
-                        println!("Please provide a city argument for the 'weather' command.");
+                        println!("\nPlease provide a city argument for the 'weather' command.\n");
                     }
                 }
                 Some("end") => break,
-                _ => println!("Invalid Command. Please enter a valid command."),
+                _ => println!("\nInvalid Command. Please enter a valid command.\n"),
             }
         }
     }

@@ -71,7 +71,13 @@ pub async fn get_weather(city: &String) -> Result<(), Box<dyn std::error::Error>
     let client = Client::new();
 
     // Fetch weather forecast
-    let my_weather: WeatherResponse = fetch_weather(&client, api_key, city).await?;
+    let my_weather: WeatherResponse = match fetch_weather(&client, api_key, city).await {
+        Ok(response) => response,
+        Err(err) => {
+            eprintln!("Invalid City Name");
+            return Ok(());
+        }
+    };
 
     // Display weather forecast information
     println!("Weather Forecast for {}, {} (Latitude: {}, Longitude: {}):",
@@ -85,7 +91,7 @@ pub async fn get_weather(city: &String) -> Result<(), Box<dyn std::error::Error>
     println!("Wind Speed: {:.2} m/s, Direction: {}", my_weather.wind.speed, deg_to_compass(my_weather.wind.deg).unwrap());
     println!("Cloudiness: {}%", my_weather.clouds.all);
     println!("Visibility: {:.2} meters", my_weather.visibility);
-    println!("Pressure: {:.2} hPa", my_weather.main.pressure);
+    println!("Pressure: {:.2} hPa\n", my_weather.main.pressure);
 
     Ok(())
 }

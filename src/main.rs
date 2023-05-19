@@ -6,7 +6,7 @@ use weather::get_weather;
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let welcome_message = r#"
-        Welcome to SkimBot, a Command Line Tool
+        Welcome to ElementaCLI, a Command Line Tool
         
         Available Commands:
         - list: Displays the available commands

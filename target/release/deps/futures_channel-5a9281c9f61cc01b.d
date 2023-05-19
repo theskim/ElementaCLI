@@ -1,0 +1,11 @@
+/Users/seankim/Documents/weather-forecast/target/release/deps/futures_channel-5a9281c9f61cc01b.rmeta: /Users/seankim/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.28/src/lib.rs /Users/seankim/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.28/src/lock.rs /Users/seankim/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.28/src/mpsc/mod.rs /Users/seankim/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.28/src/mpsc/queue.rs /Users/seankim/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.28/src/oneshot.rs
+
+/Users/seankim/Documents/weather-forecast/target/release/deps/libfutures_channel-5a9281c9f61cc01b.rlib: /Users/seankim/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.28/src/lib.rs /Users/seankim/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.28/src/lock.rs /Users/seankim/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.28/src/mpsc/mod.rs /Users/seankim/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.28/src/mpsc/queue.rs /Users/seankim/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.28/src/oneshot.rs
+
+/Users/seankim/Documents/weather-forecast/target/release/deps/futures_channel-5a9281c9f61cc01b.d: /Users/seankim/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.28/src/lib.rs /Users/seankim/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.28/src/lock.rs /Users/seankim/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.28/src/mpsc/mod.rs /Users/seankim/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.28/src/mpsc/queue.rs /Users/seankim/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.28/src/oneshot.rs
+
+/Users/seankim/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.28/src/lib.rs:
+/Users/seankim/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.28/src/lock.rs:
+/Users/seankim/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.28/src/mpsc/mod.rs:
+/Users/seankim/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.28/src/mpsc/queue.rs:
+/Users/seankim/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.28/src/oneshot.rs:

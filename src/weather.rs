@@ -74,7 +74,7 @@ pub async fn get_weather(city: &String) -> Result<(), Box<dyn std::error::Error>
     let my_weather: WeatherResponse = match fetch_weather(&client, api_key, city).await {
         Ok(response) => response,
         Err(err) => {
-            eprintln!("Invalid City Name");
+            eprintln!("Provided city name is invalid. Please try again.\n");
             return Ok(());
         }
     };

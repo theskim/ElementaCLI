@@ -62,11 +62,10 @@ struct Sys {
     sunset: u64,
 }
 
-pub async fn get_weather() -> Result<(), Box<dyn std::error::Error>> {
+pub async fn get_weather(city: &String) -> Result<(), Box<dyn std::error::Error>> {
     // Retrieve API key and city from command-line arguments
     let args: Vec<String> = env::args().collect();
     let api_key = &args[1];
-    let city: &String = &args[2];
 
     // Create a new reqwest client
     let client = Client::new();
@@ -75,17 +74,17 @@ pub async fn get_weather() -> Result<(), Box<dyn std::error::Error>> {
     let my_weather: WeatherResponse = fetch_weather(&client, api_key, city).await?;
 
     // Display weather forecast information
-    println!("Weather Forecast for {}, {} ({}, {}):", 
-        my_weather.name, my_weather.sys.country, my_weather.coord.lat, my_weather.coord.lon);
+    println!("Weather Forecast for {}, {} (Latitude: {}, Longitude: {}):",
+            my_weather.name, my_weather.sys.country, my_weather.coord.lat, my_weather.coord.lon);
     println!("Current Status: {}", my_weather.weather[0].main);
     println!("Current Temperature: {:.2}°C", my_weather.main.temp - 273.15);
-    println!("Feels like: {:.2}°C", my_weather.main.feels_like - 273.15);
+    println!("Feels Like: {:.2}°C", my_weather.main.feels_like - 273.15);
     println!("Maximum Temperature: {:.2}°C", my_weather.main.temp_max - 273.15);
     println!("Minimum Temperature: {:.2}°C", my_weather.main.temp_min - 273.15);
-    println!("Humidity: {:.2} %", my_weather.main.humidity);
-    println!("Wind: {}m/s, {:}", my_weather.wind.speed, deg_to_compass(my_weather.wind.deg).unwrap());
-    println!("Cloud: {}%", my_weather.clouds.all);
-    println!("Visibility: {:.2} m", my_weather.visibility);
+    println!("Humidity: {:.2}%", my_weather.main.humidity);
+    println!("Wind Speed: {:.2} m/s, Direction: {}", my_weather.wind.speed, deg_to_compass(my_weather.wind.deg).unwrap());
+    println!("Cloudiness: {}%", my_weather.clouds.all);
+    println!("Visibility: {:.2} meters", my_weather.visibility);
     println!("Pressure: {:.2} hPa", my_weather.main.pressure);
 
     Ok(())

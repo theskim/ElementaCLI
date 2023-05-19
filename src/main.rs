@@ -3,6 +3,9 @@ use std::io::{self, BufRead};
 mod weather;
 use weather::get_weather;
 
+mod gpt;
+use gpt::get_gpt_response;
+
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let welcome_message = r#"
@@ -41,7 +44,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                     } else {
                         println!("\nPlease provide a city argument for the 'weather' command.\n");
                     }
-                }
+                },
+                Some("gpt") => {
+                    get_gpt_response().await?;
+                },
                 Some("end") => break,
                 _ => println!("\nInvalid Command. Please enter a valid command.\n"),
             }

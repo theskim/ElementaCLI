@@ -1,4 +1,3 @@
-use dotenv::dotenv;
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
 use reqwest::Url;
